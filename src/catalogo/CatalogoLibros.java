@@ -49,9 +49,6 @@ public class CatalogoLibros {
 		return lista;
 	}
 
-	public void reservarLibro(Libro libro, Usuario usr) {
-
-	}
 
 	public void agregarLibro(String titulo, String autor) throws Exception {
 		Connection con = Conexion.getConexion();
