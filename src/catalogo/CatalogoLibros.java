@@ -3,7 +3,7 @@ package catalogo;
 import java.sql.*;
 import java.util.ArrayList;
 
-import clases.Libro;
+import clases.*;
 import utils.Conexion;
 
 public class CatalogoLibros {
@@ -49,7 +49,7 @@ public class CatalogoLibros {
 		return lista;
 	}
 
-	public void eliminarLibro(Libro libro) {
+	public void reservarLibro(Libro libro, Usuario usr) {
 
 	}
 
