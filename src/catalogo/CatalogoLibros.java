@@ -53,7 +53,7 @@ public class CatalogoLibros {
 
 	}
 
-	public void agregarLibro(Libro nuevoLibro) throws Exception {
+	public void agregarLibro(String titulo, String autor) throws Exception {
 		Connection con = Conexion.getConexion();
 		PreparedStatement pst = null;
 		ResultSet rs = null;
@@ -61,8 +61,8 @@ public class CatalogoLibros {
 
 		try {
 			pst = con.prepareStatement("INSERT INTO libros (titulo, autor)" + "VALUES (?,?)");
-			pst.setString(1, nuevoLibro.getTitulo());
-			pst.setString(2, nuevoLibro.getAutor());
+			pst.setString(1, titulo);
+			pst.setString(2, autor);
 			pst.executeUpdate();
 		} catch (Exception e) {
 			con.rollback();

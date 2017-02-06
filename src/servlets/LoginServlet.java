@@ -1,4 +1,4 @@
-package controladores.login;
+package servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -11,20 +11,22 @@ import clases.Usuario;
 
 public class LoginServlet extends HttpServlet {
 
-	/**
+	private static final long serialVersionUID = -5796755134238754729L;
+
+	/*
+	 * METODO DE CONSULTA DE LIBROS
 	 * 
+	 * @param String username
+	 * 
+	 * @param String password
 	 */
-	private static final long serialVersionUID = 1L;
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doPost(req, resp);
 
-	public LoginServlet() {
-
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		String usr = request.getParameter("username");
-		String pass = request.getParameter("password");
+		String usr = req.getParameter("username");
+		String pass = req.getParameter("password");
 		CatalogoUsuarios catUsu = new CatalogoUsuarios();
 		Usuario user;
 		try {

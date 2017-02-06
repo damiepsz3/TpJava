@@ -1,23 +1,23 @@
 package clases;
 
 public class Libro {
-	private Integer numero_id;
+	private Integer idlibro;
 	private String titulo;
 	private String autor;
 
 	
 	public Libro (){}
 	public Libro (int num, String tit, String autr) {
-		this.numero_id = num;
+		this.idlibro = num;
 		this.titulo = tit;
 		this.autor = autr;
 	}
 
 	public void setNumero_id(int numero_id) {
-		this.numero_id = numero_id;
+		this.idlibro = numero_id;
 	}
 	public Integer getNumero_id() {
-		return numero_id;
+		return idlibro;
 	}
 	
 	public void setTitulo(String titulo) {
