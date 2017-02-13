@@ -19,6 +19,7 @@ public class Conexion {
         String dtbs = "libreria_utn";
  
         try { 
+        	DriverManager.registerDriver(new com.mysql.jdbc.Driver());
             Class.forName("com.mysql.jdbc.Driver");
             String newConnectionURL = "jdbc:mysql://" + host + "/" + dtbs + "?"
                     + "user=" + user + "&password=" + pass;

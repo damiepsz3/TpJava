@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 		try {
 			Usuario user = catUsu.iniciarSesion(usr, pass);
 			JsonElement userObj = gson.toJsonTree(user);
-			if (user.getUsu() != null) {
+			if (user != null) {
 				jsObj.addProperty("success", true);
 			} else {
 				jsObj.addProperty("success", false);

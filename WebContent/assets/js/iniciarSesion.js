@@ -13,6 +13,7 @@ $(document).ready(function() {
                
                 success: function(json) {
                 	console.log(json);
+                	
                 },
 			})
 		})
