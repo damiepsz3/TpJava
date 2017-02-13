@@ -1,14 +1,22 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
 import catalogo.CatalogoUsuarios;
 import clases.Usuario;
 
+
+@WebServlet(name="LoginServlet", urlPatterns={"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -5796755134238754729L;
@@ -27,21 +35,23 @@ public class LoginServlet extends HttpServlet {
 
 		String usr = req.getParameter("username");
 		String pass = req.getParameter("password");
+		PrintWriter out = resp.getWriter();
 		CatalogoUsuarios catUsu = new CatalogoUsuarios();
-		Usuario user;
+		Gson gson = new Gson();
+		JsonObject jsObj = new JsonObject();
 		try {
-			user = catUsu.iniciarSesion(usr, pass);
-			if (user != null) {
-
-				// devolver usuario
-
+			Usuario user = catUsu.iniciarSesion(usr, pass);
+			JsonElement userObj = gson.toJsonTree(user);
+			if (user.getUsu() != null) {
+				jsObj.addProperty("success", true);
 			} else {
-
-				// devolver error
-
+				jsObj.addProperty("success", false);
 			}
+			jsObj.add("infoUsu",userObj);
+			out.println(jsObj);
+			out.close();
+			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
